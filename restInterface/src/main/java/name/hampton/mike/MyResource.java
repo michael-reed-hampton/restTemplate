@@ -42,4 +42,31 @@ public class MyResource {
 			
 		return actual;
     }
+
+
+//	/**
+//	 * Method handling HTTP GET requests. The returned object will be sent
+//	 * to the client as "text/plain" media type.
+//	 *
+//	 * @return String that will be returned as a text/plain response.
+//	 * @throws ImplementationNotFoundException
+//	 */
+//	@GET
+//	@Produces("application/json")
+//	public BusinessObject getItAsJson() throws ImplementationNotFoundException {
+//		final ServiceLoader<IBusinessFunctionality> serviceLoader = ServiceLoader.load(IBusinessFunctionality.class);
+//
+//		Iterator<IBusinessFunctionality> impls = serviceLoader.iterator();
+//
+//		if (!impls.hasNext()) {
+//			logger.severe("No name.hampton.mike.IBusinessFunctionality found");
+//			throw new ImplementationNotFoundException("No name.hampton.mike.IBusinessFunctionality found");
+//		}
+//
+//		IBusinessFunctionality instance = null;
+//		instance = impls.next();
+//		BusinessObject actual = instance.getComplexItem();
+//
+//		return actual;
+//	}
 }
