@@ -3,7 +3,6 @@ package name.hampton.mike;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,59 +13,30 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("myresource")
 public class MyResource {
-	
-	private Logger logger = Logger.getLogger(this.getClass().getName());
 
-    /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
-     * @throws ImplementationNotFoundException 
-     */
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() throws ImplementationNotFoundException {
-		final ServiceLoader<IBusinessFunctionality> serviceLoader = ServiceLoader.load(IBusinessFunctionality.class);
-		
-		Iterator<IBusinessFunctionality> impls = serviceLoader.iterator();
-		
-		if (!impls.hasNext()) {
-			logger.severe("No name.hampton.mike.IBusinessFunctionality found");
-			throw new ImplementationNotFoundException("No name.hampton.mike.IBusinessFunctionality found");
-		}
+  private Logger logger = Logger.getLogger(this.getClass().getName());
 
-		IBusinessFunctionality instance = null;
-		instance = impls.next();
-		String actual = instance.getSimpleItem();
-			
-		return actual;
+  /**
+   * Method handling HTTP GET requests. The returned object will be sent
+   * to the client as "text/plain" media type.
+   *
+   * @return String that will be returned as a text/plain response.
+   * @throws ImplementationNotFoundException - if the ServiceLoader cannot find the implementation.
+   */
+  @GET
+  @Produces(MediaType.TEXT_PLAIN)
+  public String getIt() throws ImplementationNotFoundException {
+    final ServiceLoader<IBusinessFunctionality> serviceLoader = ServiceLoader.load(IBusinessFunctionality.class);
+
+    Iterator<IBusinessFunctionality> impls = serviceLoader.iterator();
+
+    if (!impls.hasNext()) {
+      logger.severe("No name.hampton.mike.IBusinessFunctionality found");
+      throw new ImplementationNotFoundException("No name.hampton.mike.IBusinessFunctionality found");
     }
 
-
-//	/**
-//	 * Method handling HTTP GET requests. The returned object will be sent
-//	 * to the client as "text/plain" media type.
-//	 *
-//	 * @return String that will be returned as a text/plain response.
-//	 * @throws ImplementationNotFoundException
-//	 */
-//	@GET
-//	@Produces("application/json")
-//	public BusinessObject getItAsJson() throws ImplementationNotFoundException {
-//		final ServiceLoader<IBusinessFunctionality> serviceLoader = ServiceLoader.load(IBusinessFunctionality.class);
-//
-//		Iterator<IBusinessFunctionality> impls = serviceLoader.iterator();
-//
-//		if (!impls.hasNext()) {
-//			logger.severe("No name.hampton.mike.IBusinessFunctionality found");
-//			throw new ImplementationNotFoundException("No name.hampton.mike.IBusinessFunctionality found");
-//		}
-//
-//		IBusinessFunctionality instance = null;
-//		instance = impls.next();
-//		BusinessObject actual = instance.getComplexItem();
-//
-//		return actual;
-//	}
+    IBusinessFunctionality instance;
+    instance = impls.next();
+    return instance.getSimpleItem();
+  }
 }
