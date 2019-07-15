@@ -43,3 +43,4 @@ conf/sts-client-override.properties
 .Trashes
 /bin
 tmp/*
+/.gradle/
