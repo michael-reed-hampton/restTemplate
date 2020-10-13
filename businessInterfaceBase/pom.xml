@@ -7,7 +7,7 @@
     <!-- configuration -->
     <jdk.compiler.source>1.8</jdk.compiler.source>
     <jdk.compiler.target>1.8</jdk.compiler.target>
-    <junit.version>4.11</junit.version>
+    <junit.version>4.13.1</junit.version>
     <!-- for the interface module we will not run the tests -->
     <skipTests>true</skipTests>
   </properties>

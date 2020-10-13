@@ -9,7 +9,7 @@
   <properties>
     <jdk.compiler.source>1.7</jdk.compiler.source>
     <jdk.compiler.target>1.7</jdk.compiler.target>
-    <junit.version>4.11</junit.version>
+    <junit.version>4.13.1</junit.version>
   </properties>
 
   <packaging>pom</packaging>
